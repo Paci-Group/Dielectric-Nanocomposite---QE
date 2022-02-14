@@ -25,10 +25,7 @@ To Check During Calculation:
 Steps 4-6 MUST before continuing to 7-9, increase number of steps otherwise. These scripts assume that the material is an insulator and will most likely fail otherwise. If using QuantumEspresso Versions newer thqn 6.0, some of the flags/inputs may have changed. Check https://www.quantum-espresso.org/Doc/INPUT_CP.html
 
 Restarting:
-
-
-
-
+Change >ndr flag to current step and restart_mode to 'restart'
 
 Parts of the scripts:
 
@@ -49,3 +46,13 @@ ATOMIC_SPECIES
 Section: CELL_PARAMETERS (angstroms)
 
 Matrix of cell parameters in angstrom. Can obtain from Avogadro or other model-building code.
+
+Parameters to input:
+
+nbnd= number of bands, see https://www.quantum-espresso.org/Doc/INPUT_CP.html
+
+nat, ntyp  = Number of atoms, number of types of atoms.
+
+ecutwfc and ecutrho - Read pseudopotential file(s) for these.
+
+nr1b, nr2b, nr3b = These are specific to individual crystal structure, pseudopotentials etc... and may not be needed, see https://www.quantum-espresso.org/Doc/INPUT_CP.html
