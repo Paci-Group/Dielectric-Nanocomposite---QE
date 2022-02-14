@@ -1,0 +1,47 @@
+# INITIAL ELECTRON MINIMIZATION WITH GRAM-SCHMIDT ORTHOGONALIZATION
+#     More stable orthogonalization technique for electrons far from the minimum.
+#     Yields incorrect eigenenergies; used only for first few steps.
+
+# Submit using cp.x < 1_emin_gram.in > 1_output.out and QuantumEspresso Version 6.0
+
+&CONTROL
+  calculation = 'cp',
+  restart_mode = 'restart',
+  ndr = 51,
+  ndw = 51,
+  nstep  = 50,
+  iprint = 10,
+  isave  = 10,
+  tstress = .FALSE.,
+  tprnfor = .FALSE.,
+  dt    = 4,
+  etot_conv_thr = 1.d-9,
+  ekin_conv_thr = 1.d-5,
+  prefix = '4jobname'
+  pseudo_dir = './'
+/
+&SYSTEM
+  ibrav = 0,
+  nbnd= ,
+  nat  = ,
+  ntyp =3,
+  ecutwfc = 70,
+  ecutrho = 560,
+  nr1b= 30, nr2b = 30, nr3b = 30,
+  nspin=1,
+/
+&ELECTRONS
+  emass = 300.d0,
+  emass_cutoff = 2.5d0,
+  orthogonalization = 'Gram-Schmidt',
+  electron_dynamics = 'sd',
+/
+&IONS
+  ion_dynamics = 'none',
+  ion_temperature = 'not_controlled',
+/
+ATOMIC_SPECIES
+
+ATOMIC_POSITIONS (angstroms)
+
+CELL_PARAMETERS (angstroms)

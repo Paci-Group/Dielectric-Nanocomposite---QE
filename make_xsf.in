@@ -1,0 +1,12 @@
+&INPUTPP
+prefix = '$jobname',
+fileout = '$outputfile_name',
+output = 'xsf',
+ndr = 56,
+lcharge = .false.,
+atomic_number(1)=8,
+atomic_number(2)=47,
+atomic_number(3)=12,
+ldynamics = .false.,
+nframes = 1,
+/

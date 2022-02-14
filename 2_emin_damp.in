@@ -1,0 +1,43 @@
+&CONTROL
+  calculation = 'cp',
+  restart_mode = 'reset_counters',
+  ndr = 51,
+  ndw = 52,
+  nstep  = 1000,
+  iprint = 50,
+  isave  = 50,
+  tstress = .FALSE.,
+  tprnfor = .FALSE.,
+  dt    = 8,
+  etot_conv_thr = 1.d-9,
+  ekin_conv_thr = 1.d-5,
+  prefix = '$jobname'
+  pseudo_dir = './'
+/
+&SYSTEM
+  ibrav = 0,
+  nbnd= ,
+  nat  = ,
+  ntyp = ,
+  ecutwfc = 70,
+  ecutrho = 560,
+  nr1b= 30, nr2b = 30, nr3b = 30,
+  nspin=1,
+/
+&ELECTRONS
+  emass = 300.d0,
+  emass_cutoff = 2.5d0,
+  orthogonalization = 'ortho',
+  ortho_max = 100
+  electron_dynamics = 'damp',
+  electron_damping = 0.05
+/
+&IONS
+  ion_dynamics = 'none',
+  ion_temperature = 'not_controlled',
+/
+ATOMIC_SPECIES
+
+ATOMIC_POSITIONS (angstroms)
+
+CELL_PARAMETERS (angstroms)

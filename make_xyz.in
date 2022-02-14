@@ -1,0 +1,12 @@
+&INPUTPP
+prefix = '$jobname',
+fileout = '$outputfile_name',
+output = 'xyz',
+ndr = 56,
+lcharge = .false.,
+atomic_number(1)= $species1,
+atomic_number(2)= $species2,
+atomic_number(3)= $species3,
+ldynamics = .false.,
+nframes = 1,
+/
