@@ -6,22 +6,29 @@
 1_emin_gram.in --  INITIAL ELECTRON MINIMIZATION WITH GRAM-SCHMIDT ORTHOGONALIZATION.
 Stable orthogonalization technique if electrons are far from the minimum but yields incorrect eigenenergies.
 
-2_emin_damp.in -- ZERO-FIELD ELECTRON RELAXATION WITH DAMPED DYNAMICS. Bring electrons to ground-state for initial ion configuration
+2_emin_damp.in -- ZERO-FIELD ELECTRON RELAXATION WITH DAMPED DYNAMICS. Bring electrons to ground-state for initial ion configuration.
 
+3_geom_sd.in -- ZERO-FIELD GEOMETRY OPTIMIZATION WITH STEEPEST DESCENT.  Quickly relax the highest forces.
 
-4_geom_damp.in
+4_geom_damp.in -- ZERO-FIELD GEOMETRY OPTIMIZATION WITH DAMPED DYNAMICS. Efficiently relax ions once steepest-descent convergence slows down.
 
-5_geom_cell.in
+5_geom_cell.inn -- # VARIABLE CELL GEOMETRY OPTIMIZATION. Relax lattice vectors to remove stress in the unit cell.
 
+6_geom_nstepe.in -- ZERO-FIELD GEOMETRY OPTIMIZATION WITH CORRECT FORCES. Electrons should now be near minima. this step does final relaxations between ionic movements.
 
+7_zero_field_pol.in -- Calculate microscopic dipole without applied field - used as reference for next steps.
+
+8_efield_electron_pol.in -- macroscopic dipole in presence of a field.
+
+9_efield_ion_pol.in -- Fully allow ion relaxation in presence of a field and calculate dipole.
 
 ## How To Run:
 
-Must have peudopotential files, scripts and submission script in the same folder. Fill out all the flags and check with the QuantumEspresso documentation https://www.quantum-espresso.org/Doc/INPUT_CP.html . 
+Must have peudopotential files, scripts and submission script in the same folder. Fill out all the flags and check with the QuantumEspresso documentation https://www.quantum-espresso.org/Doc/INPUT_CP.html .
 
 ## To Check During Calculation:
 
-Steps 4-6 MUST before continuing to 7-9, increase number of steps otherwise. These scripts assume that the material is an insulator and will most likely fail otherwise. If using QuantumEspresso Versions newer thqn 6.0, some of the flags/inputs may have changed. Check https://www.quantum-espresso.org/Doc/INPUT_CP.html
+Steps 4-6 MUST converge fully before continuing to 7-9, increase number of steps otherwise. These scripts assume that the material is an insulator and will most likely fail otherwise. If using QuantumEspresso Versions newer than 6.0, some of the flags/inputs may have changed. Check https://www.quantum-espresso.org/Doc/INPUT_CP.html
 
 Restarting:
 Change >ndr flag to current step and restart_mode to 'restart'
@@ -32,7 +39,7 @@ Change >ndr flag to current step and restart_mode to 'restart'
 
 Include the .xyz coordinates in angstroms -- no spaces before the coordinates.
 
-**ATOMIC_SPECIES** 
+**ATOMIC_SPECIES**
 
 Include atomic species label, atomic number and corresponding pseudopotential file name. The pseudopotentials must be copied in the same directory as the .in files. Make sure there are no spaces
 
